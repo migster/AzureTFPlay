@@ -123,4 +123,16 @@ resource "azurerm_linux_virtual_machine" "mtc-vm" {
     sku       = "18.04-LTS"
     version   = "latest"
   }
+# Did not work - permission denied - config file owened by root 
+# Moving on to other stuff since this is something you wouldn't do in prod anyway
+#   provisioner "local-exec" {
+#     command = templatefile("mac-ssh-script.tpl", {
+#       hostname     = self.public_ip_address,
+#       user         = "adminuser",
+#       identityfile = "~/.ssh/id_rsa"
+#     })
+#     interpreter = ["zsh", "-c"]
+#   }
+
+
 }
